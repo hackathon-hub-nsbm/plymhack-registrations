@@ -7,38 +7,48 @@ import Footer from "@/components/Footer";
 
 export default function Home() {
     return (
-        <div className="min-h-screen md:h-screen md:overflow-hidden flex flex-col">
-            <div className="block md:hidden">
-                <br /><br /><br />
-            </div>
-
-            {/* Main Content Container */}
-            <div className="flex-1 flex flex-col md:grid md:grid-cols-[400px_1fr] md:gap-8 p-4 md:p-6 max-w-[1600px] mx-auto w-full">
-                {/* Left Sidebar - Branding & Countdown */}
-                <div className="flex flex-col justify-between space-y-4 md:space-y-6">
-                    <EventHeader
-                        description="An annual event organized by Hackathon Hub to welcome new members and showcase exciting projects"
+        <div className="min-h-screen relative">
+            {/* Mysterious particles effect */}
+            <div className="fixed inset-0 overflow-hidden pointer-events-none">
+                {[...Array(20)].map((_, i) => (
+                    <div
+                        key={i}
+                        className="absolute w-1 h-1 bg-purple-400/30 rounded-full"
+                        style={{
+                            left: `${Math.random() * 100}%`,
+                            top: `${Math.random() * 100}%`,
+                            animation: `float ${5 + Math.random() * 10}s ease-in-out infinite`,
+                            animationDelay: `${Math.random() * 5}s`,
+                        }}
                     />
+                ))}
+            </div>
+
+            {/* Main container */}
+            <div className="container mx-auto px-4 py-8 md:py-16">
+                {/* Header section - mysterious reveal */}
+                <div className="mb-16 animate-fade-in-up">
+                    <EventHeader />
+                </div>
+
+                {/* Countdown section - floating effect */}
+                <div className="mb-16 animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
                     <Countdown date="2025-11-04T09:30:00Z" />
-
-                    {/* Desktop Footer in Sidebar */}
-                    <div className="hidden md:block">
-                        <Footer />
-                    </div>
                 </div>
 
-                {/* Right Content - Form */}
-                <div className="flex-1 flex items-center justify-center md:overflow-hidden">
-                    <div className="w-full h-full md:flex md:items-center">
-                        <Form />
-                    </div>
+                {/* Form section - centered and mysterious */}
+                <div className="max-w-6xl mx-auto animate-fade-in-up" style={{ animationDelay: '0.4s' }}>
+                    <Form />
+                </div>
+
+                {/* Footer section */}
+                <div className="mt-20 animate-fade-in-up" style={{ animationDelay: '0.6s' }}>
+                    <Footer />
                 </div>
             </div>
 
-            {/* Mobile Footer */}
-            <div className="md:hidden mt-4">
-                <Footer />
-            </div>
+            {/* Exploration beam effect */}
+            <div className="fixed bottom-0 left-1/2 -translate-x-1/2 w-1 h-full bg-gradient-to-t from-purple-600/20 via-purple-600/5 to-transparent pointer-events-none" />
         </div>
     );
 }
