@@ -11,19 +11,22 @@ const teamFields = [
     "id": 1,
     "field_name": "team_name",
     "type": "text",
-    "label": "Team Designation"
+    "label": "Team Designation",
+    "placeholder": "e.g., Code Warriors, Byte Busters, Quantum Squad"
   },
   {
     "id": 2,
     "field_name": "team_email",
     "type": "email",
-    "label": "Primary Contact Vector"
+    "label": "Primary Contact Vector",
+    "placeholder": "team.leader@email.com"
   },
   {
     "id": 3,
     "field_name": "team_phone_number",
     "type": "tel",
-    "label": "Communication Channel"
+    "label": "Communication Channel",
+    "placeholder": "+94 78 573 9876 (WhatsApp preferred)"
   },
 ];
 
@@ -127,7 +130,7 @@ const Form = () => {
                          focus:outline-none focus:border-purple-500 focus:mystery-glow
                          transition-all duration-300 font-[var(--font-space-mono)]
                          placeholder:text-gray-600"
-                placeholder="..."
+                placeholder={field.placeholder || "..."}
               />
               <p className="text-red-400 text-xs mt-2 font-[var(--font-space-mono)]">
                 {errors[field.field_name as keyof TeamType]?.message}
