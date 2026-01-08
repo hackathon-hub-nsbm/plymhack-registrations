@@ -17,7 +17,7 @@ const Footer = () => {
             HACKATHON HUB
           </h3>
           <p className="text-xs font-[var(--font-space-mono)] text-gray-500 tracking-wider">
-            L2-206, B2 Floor, Faculty of Computing • NSBM Green University
+            L2-202, B2 Floor, Faculty of Computing • NSBM Green University
           </p>
         </div>
 
