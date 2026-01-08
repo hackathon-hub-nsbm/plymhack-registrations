@@ -212,7 +212,7 @@ const Form = () => {
                                focus:outline-none focus:border-purple-500 focus:mystery-glow
                                transition-all duration-300 font-[var(--font-space-mono)] text-sm
                                placeholder:text-gray-600"
-                      placeholder="..."
+                      placeholder={`e.g. ${index === 0 ? "Yasasi" : (index === 1 ? "Nethmi" : (index == 2 ? "Amalmi" : "Achini"))}`}
                     />
                     <p className="text-red-400 text-xs mt-1 font-[var(--font-space-mono)]">
                       {errors.members?.[index]?.name?.message}
