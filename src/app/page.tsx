@@ -33,7 +33,7 @@ export default function Home() {
 
                 {/* Countdown section - floating effect */}
                 <div className="mb-16 animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
-                    <Countdown date="2025-11-04T09:30:00Z" />
+                    <Countdown date="2026-02-07T08:30:00Z" />
                 </div>
 
                 {/* Form section - centered and mysterious */}
