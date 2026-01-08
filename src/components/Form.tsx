@@ -46,7 +46,6 @@ const Form = () => {
       team_name: "",
       team_email: "",
       team_phone_number: "",
-      isMember: undefined,
       members: [
         { name: "", batch: undefined, degree: undefined },
         { name: "", batch: undefined, degree: undefined },
@@ -81,7 +80,6 @@ const Form = () => {
         team_name: "",
         team_email: "",
         team_phone_number: "",
-        isMember: undefined,
         members: [
           { name: "", batch: undefined, degree: undefined },
           { name: "", batch: undefined, degree: undefined },
@@ -112,31 +110,6 @@ const Form = () => {
               <p className="text-red-400 text-sm mt-1">{errors[field.field_name as keyof TeamType]?.message}</p>
             </div>
           ))}
-        </div>
-
-        <div className="mb-6 text-center">
-          <label className="block mb-3 font-semibold text-cyan-300">Are you already a member?</label>
-          <div className="flex justify-center gap-8">
-            <label className="flex items-center gap-2 cursor-pointer">
-              <input
-                type="radio"
-                value="true"
-                {...register("isMember", { setValueAs: v => v === "true" })}
-                className="accent-purple-500"
-              />
-              <span className="hover:text-cyan-400">Yes</span>
-            </label>
-            <label className="flex items-center gap-2 cursor-pointer">
-              <input
-                type="radio"
-                value="false"
-                {...register("isMember", { setValueAs: v => v === "true" })}
-                className="accent-purple-500"
-              />
-              <span className="hover:text-cyan-400">No</span>
-            </label>
-          </div>
-          <p className="text-red-400 text-sm mt-1">{errors.isMember?.message}</p>
         </div>
 
         <div className="border-t border-purple-500 pt-4">

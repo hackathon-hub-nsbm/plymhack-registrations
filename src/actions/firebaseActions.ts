@@ -22,7 +22,6 @@ export async function createUser(team: TeamType): Promise<TeamType> {
       team_name: team.team_name,
       team_email: team.team_email,
       team_phone_number: team.team_phone_number,
-      isMember: team.isMember,
       members: team.members,
       created_at: new Date(),
     });

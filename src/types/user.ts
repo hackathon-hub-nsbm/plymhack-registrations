@@ -32,7 +32,6 @@ export const TeamSchema = z.object({
     .string()
     .regex(/^[+]?[\d\s\-()]+$/, "Please enter a valid phone number")
     .min(10, "Phone number must be at least 10 digits"),
-  isMember: z.boolean("Please select your status"),
   members: z
     .array(MemberSchema)
     .min(3, "A team must have at least 3 members")
