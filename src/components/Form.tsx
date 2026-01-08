@@ -92,15 +92,15 @@ const Form = () => {
   }
 
   return (
-    <div className="flex justify-center items-center text-white">
+    <div className="flex justify-center items-center text-white w-full h-full">
       <form
         onSubmit={handleSubmit(onSubmit)}
         ref={containerFormRef}
-        className="relative p-6 w-full max-w-4xl rounded-2xl shadow-[0_0_20px_rgba(128,0,255,0.4)] border border-purple-500 bg-opacity-20 backdrop-blur-md"
+        className="relative p-6 w-full rounded-2xl shadow-[0_0_30px_rgba(128,0,255,0.4)] border border-purple-500/50 bg-black/40 backdrop-blur-xl md:max-h-[calc(100vh-3rem)] md:overflow-y-auto"
       >
-        <h2 className="text-2xl font-bold text-center mb-6 text-cyan-300">Team Information</h2>
+        <h2 className="text-2xl font-bold text-center mb-6 text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-cyan-400">Team Registration</h2>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-5 mb-6">
           {teamFields.map(field => (
             <div key={field.id} className="flex flex-col">
               <label className="mb-2 font-semibold tracking-wide text-cyan-300">{field.label}</label>
@@ -114,7 +114,7 @@ const Form = () => {
           ))}
         </div>
 
-        <div className="mb-8 text-center">
+        <div className="mb-6 text-center">
           <label className="block mb-3 font-semibold text-cyan-300">Are you already a member?</label>
           <div className="flex justify-center gap-8">
             <label className="flex items-center gap-2 cursor-pointer">
@@ -139,77 +139,79 @@ const Form = () => {
           <p className="text-red-400 text-sm mt-1">{errors.isMember?.message}</p>
         </div>
 
-        <div className="border-t border-purple-500 pt-6">
-          <div className="flex justify-between items-center mb-6">
-            <h2 className="text-2xl font-bold text-cyan-300">Team Members ({fields.length}/4)</h2>
+        <div className="border-t border-purple-500 pt-4">
+          <div className="flex justify-between items-center mb-5">
+            <h2 className="text-xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-400">Team Members ({fields.length}/4)</h2>
             {fields.length < 4 && (
               <button
                 type="button"
-        // @ts-expect-error - Zod resolver type compatibility issue with react-hook-form
+                // @ts-expect-error - Zod resolver type compatibility issue with react-hook-form
                 onClick={() => append({ name: "", batch: undefined, degree: undefined })}
-                className="px-4 py-2 text-sm font-semibold rounded-md text-white bg-gradient-to-r from-green-600 to-teal-600 hover:from-teal-600 hover:to-green-600 transition-all duration-300"
+                className="px-4 py-2 text-sm font-semibold rounded-lg text-white bg-gradient-to-r from-green-600 to-teal-600 hover:from-teal-600 hover:to-green-600 transition-all duration-300 shadow-lg"
               >
                 + Add Member
               </button>
             )}
           </div>
 
-          {fields.map((field, index) => (
-            <div key={field.id} className="mb-6 p-4 rounded-lg border border-purple-500/50 bg-black/20">
-              <div className="flex justify-between items-center mb-4">
-                <h3 className="text-lg font-semibold text-cyan-300">Member {index + 1}</h3>
-                {fields.length > 3 && (
-                  <button
-                    type="button"
-                    onClick={() => remove(index)}
-                    className="px-3 py-1 text-sm font-semibold rounded-md text-white bg-red-600/80 hover:bg-red-600 transition-all duration-300"
-                  >
-                    Remove
-                  </button>
-                )}
+          <div className="space-y-4">
+            {fields.map((field, index) => (
+              <div key={field.id} className="p-4 rounded-lg border border-purple-500/50 bg-gradient-to-br from-purple-900/20 to-black/30 hover:border-purple-400/50 transition-all">
+                <div className="flex justify-between items-center mb-4">
+                  <h3 className="text-lg font-semibold text-cyan-300">Member {index + 1}</h3>
+                  {fields.length > 3 && (
+                    <button
+                      type="button"
+                      onClick={() => remove(index)}
+                      className="px-3 py-1 text-sm font-semibold rounded-md text-white bg-red-600/80 hover:bg-red-600 transition-all duration-300"
+                    >
+                      Remove
+                    </button>
+                  )}
+                </div>
+
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                  <div className="flex flex-col">
+                    <label className="mb-2 font-semibold tracking-wide text-cyan-300">Name</label>
+                    <input
+                      type="text"
+                      {...register(`members.${index}.name`)}
+                      className="bg-black/30 border border-purple-500 text-white p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-cyan-400"
+                    />
+                    <p className="text-red-400 text-sm mt-1">{errors.members?.[index]?.name?.message}</p>
+                  </div>
+
+                  <div className="flex flex-col">
+                    <label className="mb-2 font-semibold tracking-wide text-cyan-300">Batch</label>
+                    <select
+                      {...register(`members.${index}.batch`)}
+                      className="bg-black/30 border border-purple-500 text-white p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-cyan-400"
+                    >
+                      <option value="">Select Batch</option>
+                      {batchOptions.map((option, idx) => (
+                        <option key={idx} value={option}>{option}</option>
+                      ))}
+                    </select>
+                    <p className="text-red-400 text-sm mt-1">{errors.members?.[index]?.batch?.message}</p>
+                  </div>
+
+                  <div className="flex flex-col">
+                    <label className="mb-2 font-semibold tracking-wide text-cyan-300">Degree</label>
+                    <select
+                      {...register(`members.${index}.degree`)}
+                      className="bg-black/30 border border-purple-500 text-white p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-cyan-400"
+                    >
+                      <option value="">Select Degree</option>
+                      {degreeOptions.map((option, idx) => (
+                        <option key={idx} value={option}>{option}</option>
+                      ))}
+                    </select>
+                    <p className="text-red-400 text-sm mt-1">{errors.members?.[index]?.degree?.message}</p>
+                  </div>
+                </div>
               </div>
-
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-                <div className="flex flex-col">
-                  <label className="mb-2 font-semibold tracking-wide text-cyan-300">Name</label>
-                  <input
-                    type="text"
-                    {...register(`members.${index}.name`)}
-                    className="bg-black/30 border border-purple-500 text-white p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-cyan-400"
-                  />
-                  <p className="text-red-400 text-sm mt-1">{errors.members?.[index]?.name?.message}</p>
-                </div>
-
-                <div className="flex flex-col">
-                  <label className="mb-2 font-semibold tracking-wide text-cyan-300">Batch</label>
-                  <select
-                    {...register(`members.${index}.batch`)}
-                    className="bg-black/30 border border-purple-500 text-white p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-cyan-400"
-                  >
-                    <option value="">Select Batch</option>
-                    {batchOptions.map((option, idx) => (
-                      <option key={idx} value={option}>{option}</option>
-                    ))}
-                  </select>
-                  <p className="text-red-400 text-sm mt-1">{errors.members?.[index]?.batch?.message}</p>
-                </div>
-
-                <div className="flex flex-col">
-                  <label className="mb-2 font-semibold tracking-wide text-cyan-300">Degree</label>
-                  <select
-                    {...register(`members.${index}.degree`)}
-                    className="bg-black/30 border border-purple-500 text-white p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-cyan-400"
-                  >
-                    <option value="">Select Degree</option>
-                    {degreeOptions.map((option, idx) => (
-                      <option key={idx} value={option}>{option}</option>
-                    ))}
-                  </select>
-                  <p className="text-red-400 text-sm mt-1">{errors.members?.[index]?.degree?.message}</p>
-                </div>
-              </div>
-            </div>
-          ))}
+            ))}
+          </div>
 
           {errors.members && typeof errors.members.message === 'string' && (
             <p className="text-red-400 text-sm mt-2">{errors.members.message}</p>
@@ -220,9 +222,9 @@ const Form = () => {
           <button
             type="submit"
             disabled={isSubmitting}
-            className="relative px-10 py-3 font-bold rounded-md text-white bg-gradient-to-r from-purple-600 to-cyan-600 hover:from-cyan-600 hover:to-purple-600 transition-all duration-300 shadow-[0_0_10px_rgba(0,255,255,0.5)] disabled:opacity-70"
+            className="relative px-12 py-3 font-bold rounded-lg text-white bg-gradient-to-r from-purple-600 via-pink-600 to-cyan-600 hover:shadow-[0_0_25px_rgba(0,255,255,0.6)] transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed transform hover:scale-105"
           >
-            {isSubmitting ? "..." : "Register Team"}
+            {isSubmitting ? "Submitting..." : "Register Team"}
           </button>
         </div>
 

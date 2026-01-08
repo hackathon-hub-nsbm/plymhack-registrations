@@ -3,34 +3,42 @@
 import Countdown from "@/components/Countdown";
 import EventHeader from "@/components/EventHeader";
 import Form from "@/components/Form";
-import Testimonials from "@/components/Testimonials";
 import Footer from "@/components/Footer";
-import Background from "../../public/assets/background-original.png";
 
 export default function Home() {
     return (
-        <div
-            className="flex flex-col md:flex-row items-center justify-center min-h-screen"
-        >
-            {/* Left Side: Event Header + Countdown */}
-            <div className="md:w-1/2 h-160 md:h-screen flex flex-col items-center justify-center relative space-y-8">
-              <div className="block md:hidden">
+        <div className="min-h-screen md:h-screen md:overflow-hidden flex flex-col">
+            <div className="block md:hidden">
                 <br /><br /><br />
-              </div>
-                <EventHeader
-                    description="An annual event organized by Hackathon Hub to welcome new members and showcase exciting projects"
-                />
-                <Countdown date="2025-11-04T09:30:00Z" />
-                {/* Testimonials */}
-                <Testimonials />
             </div>
 
-            {/* Right Side: Registration Form */}
-            <div className="flex flex-col items-center justify-center md:w-1/2 h-full">
-                <Form />
+            {/* Main Content Container */}
+            <div className="flex-1 flex flex-col md:grid md:grid-cols-[400px_1fr] md:gap-8 p-4 md:p-6 max-w-[1600px] mx-auto w-full">
+                {/* Left Sidebar - Branding & Countdown */}
+                <div className="flex flex-col justify-between space-y-4 md:space-y-6">
+                    <EventHeader
+                        description="An annual event organized by Hackathon Hub to welcome new members and showcase exciting projects"
+                    />
+                    <Countdown date="2025-11-04T09:30:00Z" />
+
+                    {/* Desktop Footer in Sidebar */}
+                    <div className="hidden md:block">
+                        <Footer />
+                    </div>
+                </div>
+
+                {/* Right Content - Form */}
+                <div className="flex-1 flex items-center justify-center md:overflow-hidden">
+                    <div className="w-full h-full md:flex md:items-center">
+                        <Form />
+                    </div>
+                </div>
+            </div>
+
+            {/* Mobile Footer */}
+            <div className="md:hidden mt-4">
                 <Footer />
             </div>
-
         </div>
     );
 }

@@ -8,17 +8,17 @@ interface EventHeaderProps {
 
 const EventHeader = ({ description }: EventHeaderProps) => {
   return (
-    <div className="text-center md:text-left p-6 flex flex-col items-center">
+    <div className="text-center md:text-left flex flex-col items-center md:items-start space-y-3">
       <Image
-                src="/assets/logo.jpg" 
-                alt="Event Logo"
-                width={250}
-                height={250}
-                // className="mb-6 drop-shadow-[0_0_20px_#00ffff70] rounded-full"
-                priority
-              />
+        src="/assets/logo.jpg"
+        alt="Event Logo"
+        width={200}
+        height={200}
+        className="rounded-lg shadow-lg"
+        priority
+      />
 
-        <p className="text-gray-300 max-w-md mb-6 leading-relaxed text-lg text-center md:text-center mx-auto">
+      <p className="text-gray-300 leading-relaxed text-sm md:text-base text-center md:text-left">
         {description}
       </p>
     </div>

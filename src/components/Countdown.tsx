@@ -40,18 +40,18 @@ const Countdown = ({ date }: { date: string }) => {
   ];
 
   return (
-    <div className="flex justify-center gap-3 flex-wrap">
+    <div className="flex justify-center md:justify-start gap-2 flex-wrap">
       {timeArray.map((t, index) => (
         <div
           key={index}
-          className="flex flex-col items-center bg-black/80 border-2 border-purple-700 
-                     p-3 rounded-lg min-w-[60px] transform transition-transform duration-300 hover:scale-105
-                     "
+          className="flex flex-col items-center bg-gradient-to-br from-purple-900/50 to-black/80 border border-purple-500/50 
+                     p-3 rounded-lg min-w-[70px] transform transition-all duration-300 hover:scale-105 hover:border-cyan-400/50
+                     shadow-[0_0_15px_rgba(128,0,255,0.3)]"
         >
-          <div className="text-2xl font-extrabold text-purple-300 drop-shadow-[0_0_8px_purple]">
+          <div className="text-2xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-purple-300 to-cyan-300">
             {String(t.value).padStart(2, "0")}
           </div>
-          <span className="text-xs text-purple-300 mt-1">{t.label}</span>
+          <span className="text-xs text-purple-200 mt-1 font-medium">{t.label}</span>
         </div>
       ))}
     </div>
