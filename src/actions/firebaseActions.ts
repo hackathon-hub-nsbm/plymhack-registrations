@@ -2,38 +2,36 @@
 
 import { collection, addDoc, getDocs, query, where } from "firebase/firestore";
 import { db } from "../config/firebase";
-import { UserType } from "@/types/user";
+import { TeamType } from "@/types/user";
 
-// user creating function
-export async function createUser(user: UserType): Promise<UserType> {
+// team creating function
+export async function createUser(team: TeamType): Promise<TeamType> {
   try {
-    const usersRef = collection(db, "users");
+    const teamsRef = collection(db, "teams");
 
-    // checks if the user already exists
-    const userRef = collection(db, "users");
-    const q = query(userRef, where("email", "==", user.email));
+    // checks if the team already exists
+    const teamRef = collection(db, "teams");
+    const q = query(teamRef, where("team_email", "==", team.team_email));
     const querySnapshot = await getDocs(q);
 
     if (!querySnapshot.empty) {
-      throw new Error("User already exists");
+      throw new Error("Team already exists");
     }
 
-    const docRef = await addDoc(usersRef, {
-      name: user.name,
-      email: user.email,
-      phone_number: user.phone_number,
-      gender: user.gender,
-      batch: user.batch,
-      degree: user.degree,
-      isMember: user.isMember,
+    const docRef = await addDoc(teamsRef, {
+      team_name: team.team_name,
+      team_email: team.team_email,
+      team_phone_number: team.team_phone_number,
+      isMember: team.isMember,
+      members: team.members,
       created_at: new Date(),
     });
 
     return {
-      ...user,
+      ...team,
     };
   } catch (error) {
-    console.error("Error creating user:", error);
+    console.error("Error creating team:", error);
     throw error;
   }
 }
