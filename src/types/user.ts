@@ -3,7 +3,7 @@ import * as z from "zod";
 const MemberSchema = z.object({
   name: z.string().regex(/^[a-zA-Z\s]{2,32}$/, "Please enter a valid name"),
   batch: z.enum(
-    ["25.3", "25.2", "25.1", "24.3", "24.2", "24.1", "23.2", "23.1"],
+    ["25.3", "25.2", "25.1", "24.3", "24.2", "24.1", "23.2", "23.1", "22.2"],
     "Please select a valid batch"
   ),
   degree: z.enum(

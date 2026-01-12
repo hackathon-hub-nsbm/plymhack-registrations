@@ -30,7 +30,7 @@ const teamFields = [
   },
 ];
 
-const batchOptions = ["25.3", "25.2", "25.1", "24.3", "24.2", "24.1", "23.2", "23.1"];
+const batchOptions = ["25.3", "25.2", "25.1", "24.3", "24.2", "24.1", "23.2", "23.1", "22.2"];
 const degreeOptions = ["Artificial Intelligence", "Computer Science", "Data Science", "Computer Security", "Cyber Security", "Computer Networks", "Software Engineering", "Technology Management", "Management Information Systems"];
 
 const Form = () => {
