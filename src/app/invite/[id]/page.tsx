@@ -133,14 +133,14 @@ export default function InvitePage() {
                         <div className="relative glass-effect rounded-2xl p-8 md:p-12 exploration-shadow mysterious-border">
                             <div className="text-red-400 text-6xl mb-6">⚠️</div>
                             <h2 className="text-3xl md:text-4xl font-bold font-[var(--font-orbitron)] mystery-text-glow mb-4 tracking-wider">
-                                ACCESS DENIED
+                                INVALID INVITATION
                             </h2>
                             <p className="text-gray-400 font-[var(--font-space-mono)] tracking-widest text-sm mb-6">
-                                &gt;&gt; INVALID INVITATION CODE &lt;&lt;
+                                INVITATION CODE NOT RECOGNIZED
                             </p>
                             <p className="text-gray-500 font-[var(--font-space-mono)] text-sm">
-                                The invitation code you entered does not exist in our system.
-                                Please verify the URL and try again.
+                                The invitation code you entered is not valid.
+                                Please verify the URL and contact the organizers if you believe this is an error.
                             </p>
                         </div>
                     </div>
@@ -188,12 +188,12 @@ export default function InvitePage() {
                             <div className="text-center mb-12">
                                 <div className="inline-block relative">
                                     <h2 className="text-3xl md:text-4xl font-bold font-[var(--font-orbitron)] mystery-text-glow mb-2 tracking-wider">
-                                        CLASSIFIED INVITATION
+                                        OFFICIAL INVITATION
                                     </h2>
                                     <div className="absolute -bottom-2 left-0 w-full h-px bg-gradient-to-r from-transparent via-purple-500 to-transparent" />
                                 </div>
                                 <p className="mt-6 text-gray-400 font-[var(--font-space-mono)] tracking-widest text-sm">
-                                    &gt;&gt; ACCESS CODE: {invite.id.toUpperCase()} &lt;&lt;
+                                    PLYMHACK 2026 • UNIVERSITY OF PLYMOUTH
                                 </p>
                             </div>
 
@@ -201,7 +201,7 @@ export default function InvitePage() {
                             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
                                 <div className="text-center">
                                     <label className="block mb-3 font-[var(--font-space-mono)] text-sm tracking-widest text-purple-300 uppercase">
-                                        Designated Individual
+                                        Invited Guest
                                     </label>
                                     <div className="bg-black/50 border border-purple-500/30 text-gray-100 px-4 py-3 rounded-lg font-[var(--font-space-mono)] text-center mystery-glow">
                                         {invite.name}
@@ -210,7 +210,7 @@ export default function InvitePage() {
 
                                 <div className="text-center">
                                     <label className="block mb-3 font-[var(--font-space-mono)] text-sm tracking-widest text-purple-300 uppercase">
-                                        Operational Role
+                                        Academic Position
                                     </label>
                                     <div className="bg-black/50 border border-purple-500/30 text-gray-100 px-4 py-3 rounded-lg font-[var(--font-space-mono)] text-center mystery-glow">
                                         {invite.position}
@@ -219,7 +219,7 @@ export default function InvitePage() {
 
                                 <div className="text-center">
                                     <label className="block mb-3 font-[var(--font-space-mono)] text-sm tracking-widest text-purple-300 uppercase">
-                                        Department Sector
+                                        Department
                                     </label>
                                     <div className="bg-black/50 border border-purple-500/30 text-gray-100 px-4 py-3 rounded-lg font-[var(--font-space-mono)] text-center mystery-glow">
                                         {invite.department}
@@ -298,13 +298,13 @@ export default function InvitePage() {
                                                            overflow-hidden group"
                                             >
                                                 <span className="relative z-10">
-                                                    {isCapturing ? 'CAPTURING...' : 'CAPTURE IDENTITY'}
+                                                    {isCapturing ? 'CAPTURING...' : 'CAPTURE PHOTO'}
                                                 </span>
                                                 <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent
                                                               translate-x-[-200%] group-hover:translate-x-[200%] transition-transform duration-1000" />
                                             </button>
                                             <p className="text-xs text-gray-500 font-[var(--font-space-mono)] tracking-wider">
-                                                &gt;&gt; POSITION YOURSELF IN FRAME &lt;&lt;
+                                                PLEASE POSITION YOURSELF IN THE FRAME
                                             </p>
                                         </div>
                                     </div>
@@ -318,7 +318,7 @@ export default function InvitePage() {
                             {invite.message && (
                                 <div className="mb-10">
                                     <label className="block mb-3 font-[var(--font-space-mono)] text-sm tracking-widest text-purple-300 uppercase text-center">
-                                        Mission Brief
+                                        Personal Message
                                     </label>
                                     <div className="bg-black/50 border border-purple-500/30 text-gray-100 px-6 py-4 rounded-lg font-[var(--font-space-mono)] text-center mystery-glow italic">
                                         &quot;{invite.message}&quot;
@@ -333,9 +333,10 @@ export default function InvitePage() {
                                 </h3>
                                 <div className="space-y-2 text-gray-400 font-[var(--font-space-mono)] tracking-wider text-sm">
                                     <p>DATE: February 7, 2026</p>
-                                    <p>TIME: 1:30 PM</p>
+                                    <p>TIME: 8:30 AM</p>
                                     <p>DURATION: 24 Hours</p>
-                                    <p>OBJECTIVE: Enter the Unknown • Discover Infinite Possibilities</p>
+                                    <p>VENUE: University of Plymouth</p>
+                                    <p>OBJECTIVE: Innovation • Collaboration • Creation</p>
                                 </div>
                             </div>
 
@@ -352,13 +353,13 @@ export default function InvitePage() {
                            overflow-hidden group"
                                 >
                                     <span className="relative z-10">
-                                        ACCEPT MISSION
+                                        ACCEPT INVITATION
                                     </span>
                                     <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent
                                 translate-x-[-200%] group-hover:translate-x-[200%] transition-transform duration-1000" />
                                 </button>
                                 <p className="mt-4 text-xs text-gray-500 font-[var(--font-space-mono)] tracking-wider">
-                                    &gt;&gt; CLICK TO BEGIN YOUR JOURNEY &lt;&lt;
+                                    PROCEED TO REGISTRATION
                                 </p>
                             </div>
                         </div>
