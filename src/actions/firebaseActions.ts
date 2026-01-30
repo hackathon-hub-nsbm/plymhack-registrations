@@ -34,3 +34,21 @@ export async function createUser(team: TeamType): Promise<TeamType> {
     throw error;
   }
 }
+
+// fetch all teams from the database
+export async function fetchAllTeams() {
+  try {
+    const teamsRef = collection(db, "teams");
+    const querySnapshot = await getDocs(teamsRef);
+
+    const teams = querySnapshot.docs.map((doc) => ({
+      id: doc.id,
+      ...doc.data(),
+    }));
+
+    return teams;
+  } catch (error) {
+    console.error("Error fetching teams:", error);
+    throw error;
+  }
+}
