@@ -5,6 +5,7 @@ import { useEffect, useState, useRef } from "react";
 import { getInviteById, InviteData } from "@/data/invites";
 import EventHeader from "@/components/EventHeader";
 import Footer from "@/components/Footer";
+import QRCode from "react-qr-code";
 
 export default function InvitePage() {
     const params = useParams();
@@ -15,6 +16,7 @@ export default function InvitePage() {
     const [capturedPhoto, setCapturedPhoto] = useState<string | null>(null);
     const [cameraError, setCameraError] = useState<string | null>(null);
     const [isCapturing, setIsCapturing] = useState(false);
+    const [showQR, setShowQR] = useState(false);
     const videoRef = useRef<HTMLVideoElement>(null);
     const canvasRef = useRef<HTMLCanvasElement>(null);
 
@@ -313,6 +315,42 @@ export default function InvitePage() {
 
                             {/* Hidden canvas for photo capture */}
                             <canvas ref={canvasRef} className="hidden" />
+
+                            {/* QR Code Section */}
+                            <div className="mb-10">
+                                <div className="flex items-center justify-between mb-6">
+                                    <label className="block font-[var(--font-space-mono)] text-sm tracking-widest text-purple-300 uppercase">
+                                        Share Invitation
+                                    </label>
+                                    <button
+                                        onClick={() => setShowQR(!showQR)}
+                                        className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 ${
+                                            showQR ? 'bg-purple-600' : 'bg-gray-600'
+                                        }`}
+                                    >
+                                        <span
+                                            className={`inline-block h-4 w-4 transform rounded-full bg-white transition-transform duration-200 ${
+                                                showQR ? 'translate-x-6' : 'translate-x-1'
+                                            }`}
+                                        />
+                                    </button>
+                                </div>
+
+                                {showQR && (
+                                    <div className="text-center animate-fade-in-up">
+                                        <div className="inline-block p-4 bg-white rounded-lg shadow-lg">
+                                            <QRCode
+                                                value={`https://plymhack-registrations.vercel.app/invite/${invite.id}`}
+                                                size={200}
+                                                style={{ height: "auto", maxWidth: "100%", width: "100%" }}
+                                            />
+                                        </div>
+                                        <p className="mt-4 text-xs text-gray-500 font-[var(--font-space-mono)] tracking-wider">
+                                            SCAN TO ACCESS THIS INVITATION
+                                        </p>
+                                    </div>
+                                )}
+                            </div>
 
                             {/* Personal Message */}
                             {invite.message && (
