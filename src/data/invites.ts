@@ -40,7 +40,7 @@ export const invites: InviteData[] = [
       "Dear Dean Ranaweera, your leadership of the Faculty of Computing and your research excellence would bring tremendous prestige and inspiration to PlymHack 2026.",
   },
   {
-    id: "epsilon-2",
+    id: "naji",
     name: "Mr. Saravanapavan Nasiketha",
     position: "Lecturer",
     department: "Faculty of Computing",
